@@ -11,14 +11,21 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class ListActivity extends AppCompatActivity {
     final String title = "List Activity"; // differentiate Main Activity from List Activity
+    ArrayList<User> myList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        User myData = new User();
+
+        // randomizing name, descriptions, followed statuses for array list
+
     }
 
     @Override
