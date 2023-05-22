@@ -25,7 +25,12 @@ public class ListActivity extends AppCompatActivity {
         User myData = new User();
 
         // randomizing name, descriptions, followed statuses for array list
-
+        //adding to a array list
+        for (int i = 0; i<100; i++) {
+            myData.setName("Name"+randomNum());
+            myData.setDescription("Description"+ String.valueOf(i));
+            myList.add(myData);
+        }
     }
 
     @Override
