@@ -1,5 +1,7 @@
 package sg.edu.np.mad.week2project;
 
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +25,12 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder>{
 
     public void onBindViewHolder(ProfileViewHolder holder, int position){
         User list_items = list_objects.get(position); // based on location get item out
-        holder.txt.setText(list_items.getName()); // insert text here
-        holder.txt.setText(list_items.getDescription()); // insert text here
+        String name = list_items.getName();
+        String description = list_items.getDescription();
+        String nameAndDesc = name + "\n" + description;
+        // holder.txt.setText(list_items.getName()); // insert text here
+        // holder.txt.setText(list_items.getDescription()); // insert text here
+        holder.txt.setText(nameAndDesc);
     }
 
     public int getItemCount(){

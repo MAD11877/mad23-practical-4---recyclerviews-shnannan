@@ -30,7 +30,7 @@ public class ListActivity extends AppCompatActivity {
         // randomizing name, descriptions, followed statuses for array list
         //adding to a array list
         for (int i = 0; i<20; i++) {
-            myUser.setName("Name-" + randomNum()); // random name and number
+            myUser.setName("Name" + randomNum()); // random name and number
             myUser.setDescription("Description" + randomNum()); // random description and number
 
             Random rd = new Random(); // creating Random object

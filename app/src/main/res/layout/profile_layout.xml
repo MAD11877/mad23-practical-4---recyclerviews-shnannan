@@ -12,7 +12,6 @@
         android:layout_marginBottom="32dp"
         android:background="@color/design_default_color_primary"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -45,27 +44,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="406dp"
-        android:layout_height="203dp"
+        android:layout_width="408dp"
+        android:layout_height="137dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="60dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="167dp"
-            android:layout_height="match_parent" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="177dp"
+            android:layout_width="98dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="TextView" />
+            app:srcCompat="@mipmap/ic_launcher_round" />
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="177dp"
+            android:layout_width="310dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="TextView" />
