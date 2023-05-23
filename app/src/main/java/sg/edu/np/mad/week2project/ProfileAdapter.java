@@ -18,7 +18,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder>{
     }
 
     public ProfileViewHolder onCreateViewHolder(ViewGroup parent, int viewType){ // taking in 2 content
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.profile_layout, parent, false);
         ProfileViewHolder holder = new ProfileViewHolder(view); // not just a text now, 2 parts now
         return holder; // no longer a single text
     }

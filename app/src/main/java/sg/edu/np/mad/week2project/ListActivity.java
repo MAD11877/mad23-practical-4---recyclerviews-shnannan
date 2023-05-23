@@ -37,12 +37,6 @@ public class ListActivity extends AppCompatActivity {
             myUser.setFollowed(rd.nextBoolean()); // displaying a random boolean
             myList.add(myUser);
         }
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Log.v(title, "On Resume! List Activity Page Started!");
         // starting the recycler view page
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         ProfileAdapter profileAdapter = new ProfileAdapter(myList);
@@ -50,6 +44,12 @@ public class ListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(myLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator()); // set animation
         recyclerView.setAdapter(profileAdapter);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.v(title, "On Resume! List Activity Page Started!");
 
         // when image is clicked, show alert dialog with corresponding page
         ImageView listView = findViewById(R.id.imageView);
