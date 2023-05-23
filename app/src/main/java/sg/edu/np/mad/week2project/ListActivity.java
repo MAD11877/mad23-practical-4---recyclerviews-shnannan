@@ -2,6 +2,9 @@ package sg.edu.np.mad.week2project;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -40,11 +43,21 @@ public class ListActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         Log.v(title, "On Resume! List Activity Page Started!");
+        // starting the recycler view page
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        ProfileAdapter profileAdapter = new ProfileAdapter(myList);
+        LinearLayoutManager myLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(myLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator()); // set animation
+        recyclerView.setAdapter(profileAdapter);
+
+        // when image is clicked, show alert dialog with corresponding page
         ImageView listView = findViewById(R.id.imageView);
         listView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.v(title, "List image clicked!");
+                // alert dialog is launched
                 ImageAlertDialog();
             }
         });
@@ -61,7 +74,10 @@ public class ListActivity extends AppCompatActivity {
                 // intent to go back to main activity through View button
                 Intent myIntent = new Intent(ListActivity.this, MainActivity.class);
                 String randNum = String.valueOf(randomNum());
-                myIntent.putExtra("Random Number", randNum); // getting random number from List Activity Page
+                // getting random number from List Activity Page
+                myIntent.putExtra("Random Number", randNum);
+                // getting randomized contents and throwing over (overcoming global static variable)
+                myIntent.putExtra("My Objects", myList);
                 startActivity(myIntent); // the action of the Intent
                 Log.v(title, "New random number generated");
             }
