@@ -22,14 +22,17 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        User myData = new User();
+        User myUser = new User();
 
         // randomizing name, descriptions, followed statuses for array list
         //adding to a array list
-        for (int i = 0; i<100; i++) {
-            myData.setName("Name"+randomNum());
-            myData.setDescription("Description"+ String.valueOf(i));
-            myList.add(myData);
+        for (int i = 0; i<20; i++) {
+            myUser.setName("Name-" + randomNum()); // random name and number
+            myUser.setDescription("Description" + randomNum()); // random description and number
+
+            Random rd = new Random(); // creating Random object
+            myUser.setFollowed(rd.nextBoolean()); // displaying a random boolean
+            myList.add(myUser);
         }
     }
 
