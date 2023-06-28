@@ -1,39 +1,85 @@
 package sg.edu.np.mad.week2project;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.text.SpannableString;
 import android.text.style.AbsoluteSizeSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder>{
-    private ArrayList<User> list_objects; // to put image and text into arraylist need an object under myObject (store it)
+    ArrayList<User> data;
 
-    public ProfileAdapter(ArrayList<User> obj){
-        this.list_objects = obj; // whatever is passed will be stored here
+    public ProfileAdapter(ArrayList<User> input){
+        data = input;
     }
 
-    public ProfileViewHolder onCreateViewHolder(ViewGroup parent, int viewType){ // taking in 2 content
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.profile_layout, parent, false);
-        ProfileViewHolder holder = new ProfileViewHolder(view); // not just a text now, 2 parts now
-        return holder; // no longer a single text
+    @NonNull
+    @Override
+    public ProfileViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View item = null;
+
+        if(viewType == 7) {
+            item = LayoutInflater.from(parent.getContext()).inflate(
+                    R.layout.reviewitem2,
+                    parent,
+                    false
+            );
+        } else {
+            item = LayoutInflater.from(parent.getContext()).inflate(
+                    R.layout.reviewitem,
+                    parent,
+                    false
+            );
+        }
+        return new ProfileViewHolder(item);
     }
 
-    public void onBindViewHolder(ProfileViewHolder holder, int position){
-        User list_items = list_objects.get(position); // based on location get item out
-        String name = list_items.getName();
-        String description = list_items.getDescription();
-        String nameAndDesc = name + "\n" + description;
-        // holder.txt.setText(list_items.getName()); // insert text here
-        // holder.txt.setText(list_items.getDescription()); // insert text here
-        holder.txt.setText(nameAndDesc);
+    @Override
+    public int getItemViewType(int position) {
+        return Integer.parseInt(data.get(position).name.substring(data.get(position).name.length()-1));
     }
 
-    public int getItemCount(){
-        return list_objects.size();
+    @Override
+    public void onBindViewHolder(@NonNull ProfileViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        User myUser = data.get(position);
+        holder.txtTitle.setText(myUser.name);
+        holder.txtDesc.setText(myUser.description);
+
+
+        holder.image.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("Debug", "Image clicked");
+
+                new AlertDialog.Builder(holder.image.getContext())
+                        .setTitle("Profile")
+                        .setMessage(myUser.name)
+                        .setPositiveButton("View", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent viewProfile = new Intent(holder.image.getContext(), MainActivity.class);
+                                viewProfile.putExtra("id", position);
+                                holder.image.getContext().startActivity(viewProfile);
+                            }
+                        })
+                        .setNegativeButton("Close", null)
+                        .show();
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
     }
 }

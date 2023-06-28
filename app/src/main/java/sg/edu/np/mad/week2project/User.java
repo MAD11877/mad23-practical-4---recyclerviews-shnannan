@@ -6,6 +6,15 @@ public class User {
     int id;
     boolean followed;
 
+    public User() {}
+
+    public User(String name, String description, int id, boolean followed) {
+        this.name = name;
+        this.description = description;
+        this.id = id;
+        this.followed = followed;
+    }
+
     public String getName() {
         return name;
     }
