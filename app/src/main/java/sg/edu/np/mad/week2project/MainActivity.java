@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.v(title,"Toggle Button: Message clicked!");
                 message.setText("Messaged!");  // user is messaged
+                Toast.makeText(MainActivity.this, "Messaged User!", Toast.LENGTH_SHORT).show();
             }
         });
     }
