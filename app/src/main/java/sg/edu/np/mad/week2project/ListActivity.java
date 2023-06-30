@@ -24,21 +24,43 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+        Log.v(title, "Create!");
 
-        userList = new ArrayList<>();
-        for(int i=0; i<20; i++)
-        {
-            User myUser = new User();
-            myUser.name = "Name" + new Random().nextInt();
-            myUser.description = "Description " + new Random().nextInt();
-            myUser.followed = new Random().nextInt()%2 == 0;
-            userList.add(myUser);
+        for (int i = 0; i < 20; i++) {
+            String randomName = generateRandomName();
+            String randomDescription = generateRandomDescription();
+            boolean randomFollowed = generateRandomFollowedValue();
+
+            User u = new User(randomName, randomDescription, randomFollowed);
+            userList.add(u);
         }
 
-        RecyclerView rv = findViewById(R.id.rv);
-        ProfileAdapter Adapter = new ProfileAdapter(userList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        rv.setLayoutManager(linearLayoutManager);
-        rv.setAdapter(Adapter);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        UserAdapter userAdapter = new UserAdapter(ListActivity.this, userList);
+        recyclerView.setAdapter(userAdapter);
+    }
+
+    private int randomInteger(){
+        Random ran = new Random();
+        int myRandomNumber = ran.nextInt();
+        return myRandomNumber;
+    }
+
+    private String generateRandomName(){
+        String name = "Name";
+        Integer num = randomInteger();
+        return name + num;
+    }
+
+    private String generateRandomDescription(){
+        String desc = "Description ";
+        Integer num = randomInteger();
+        return desc + num;
+    }
+
+    private boolean generateRandomFollowedValue(){
+        Random random = new Random();
+        return random.nextBoolean();
     }
 }

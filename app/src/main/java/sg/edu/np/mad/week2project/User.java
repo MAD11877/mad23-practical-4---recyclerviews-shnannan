@@ -3,15 +3,14 @@ package sg.edu.np.mad.week2project;
 public class User {
     String name;
     String description;
-    int id;
     boolean followed;
+    int id;
 
     public User() {}
 
-    public User(String name, String description, int id, boolean followed) {
+    public User(String name, String description, boolean followed) {
         this.name = name;
         this.description = description;
-        this.id = id;
         this.followed = followed;
     }
 

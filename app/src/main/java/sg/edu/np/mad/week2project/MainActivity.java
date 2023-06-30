@@ -22,32 +22,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.v(title, "Create!");
-        // getting Name and description
-        myUser.followed = false; // not followed!
-        myUser.isFollowed();
-
-    }
-
-    @Override
-    protected void onStart(){
-        super.onStart();
-        Log.v(title, "Start!"); // title, msg (logging) which of these functions am i in
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.v(title, "Resume");
-
-        Intent myRecvIntent = getIntent();
-        int value = myRecvIntent.getIntExtra("id",0);
+        Intent rec = getIntent();
+        int value = rec.getIntExtra("id",0);
         myUser = ListActivity.userList.get(value);
 
-        TextView name = findViewById(R.id.txtName);
-        name.setText(myUser.getName());
-        TextView description = findViewById(R.id.txtDescription);
+        TextView UserName = findViewById(R.id.txtTitle);
+        UserName.setText(myUser.getName());
+        TextView description = findViewById(R.id.txtDesc);
         description.setText(myUser.getDescription());
         setFollowBtn();
+        setMessageBtn();
     }
 
     private void setFollowBtn() {
@@ -58,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             follow.setText("Follow");
-            Log.v(title,"Button: Follow clicked!Now Following");
+            Log.v(title,"Button: Unfollow clicked! Now Following");
         }
     }
 
@@ -70,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"Unfollowed", Toast.LENGTH_SHORT).show();
         setFollowBtn();
     }
+
     private void setMessageBtn() {
         Button message = findViewById(R.id.messageBtn);
         message.setOnClickListener(new View.OnClickListener() {
