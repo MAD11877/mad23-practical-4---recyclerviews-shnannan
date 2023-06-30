@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.v(title, "Create!");
+
         Intent rec = getIntent();
         int value = rec.getIntExtra("id",0);
         myUser = ListActivity.userList.get(value);
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         TextView description = findViewById(R.id.txtDescription);
         description.setText(myUser.getDescription());
         setFollowBtn();
-        setMessageBtn();
     }
 
     private void setFollowBtn() {
@@ -53,17 +53,5 @@ public class MainActivity extends AppCompatActivity {
         else
             Toast.makeText(this,"Unfollowed", Toast.LENGTH_SHORT).show();
         setFollowBtn();
-    }
-
-    private void setMessageBtn() {
-        Button message = findViewById(R.id.messageBtn);
-        message.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.v(title,"Toggle Button: Message clicked!");
-                message.setText("Messaged!");  // user is messaged
-                Toast.makeText(MainActivity.this, "Messaged User!", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

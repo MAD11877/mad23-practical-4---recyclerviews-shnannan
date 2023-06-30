@@ -4,9 +4,4 @@
     <string name="TextView">Lorem ipsum dolor sit amet. Et quas recusandae id quae deserunt ea placeat beatae quo velit quam est quidem soluta et rerum voluptas ut alias fuga! Ab pariatur ipsum hic libero rerum qui doloribus nobis qui quam sint non culpa inventore et voluptas sequi.</string>
     <string name="TextView5">MADPractical</string>
     <string name="TextView3">MADPractical</string>
-    <string name="togBtn2off">Follow</string>
-    <string name="togBtn2on">Unfollow</string>
-    <string name="togBtn3off">Message</string>
-    <string name="togBtn3on">Messaged!</string>
-
 </resources>

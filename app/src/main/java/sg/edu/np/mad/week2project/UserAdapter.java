@@ -5,6 +5,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
     ArrayList<User> userData;
 
-    public UserAdapter (Context context, ArrayList<User> input){
+    public UserAdapter (Context context, ArrayList<User> input) {
         userData = input;
     }
 
@@ -76,7 +79,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
             }
         });
     }
-    public int getItemCount(){
+    public int getItemCount() {
         return userData.size();
     }
 }

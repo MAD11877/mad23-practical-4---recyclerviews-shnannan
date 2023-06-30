@@ -6,14 +6,14 @@ public class User {
     boolean followed;
     int id;
 
-    public User() {}
 
     public User(String name, String description, boolean followed) {
         this.name = name;
         this.description = description;
         this.followed = followed;
     }
-
+    public User() {
+    }
     public String getName() {
         return name;
     }
