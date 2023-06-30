@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         int value = rec.getIntExtra("id",0);
         myUser = ListActivity.userList.get(value);
 
-        TextView UserName = findViewById(R.id.txtTitle);
+        TextView UserName = findViewById(R.id.txtName);
         UserName.setText(myUser.getName());
-        TextView description = findViewById(R.id.txtDesc);
+        TextView description = findViewById(R.id.txtDescription);
         description.setText(myUser.getDescription());
         setFollowBtn();
         setMessageBtn();
