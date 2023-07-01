@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
     ArrayList<User> userData;
 
-    public UserAdapter (Context context, ArrayList<User> input) {
+    public UserAdapter (Context context, ArrayList<User> input){
         userData = input;
     }
 
@@ -32,13 +32,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
         if(viewType == 7) {
             item = LayoutInflater.from(parent.getContext()).inflate(
-                    R.layout.recyclerview_item_2,
+                    R.layout.recycler_view_item2,
                     parent,
                     false
             );
         } else {
             item = LayoutInflater.from(parent.getContext()).inflate(
-                    R.layout.recyclerview_item,
+                    R.layout.recycler_view_item,
                     parent,
                     false
             );
@@ -79,7 +79,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
             }
         });
     }
-    public int getItemCount() {
+
+
+    public int getItemCount(){
         return userData.size();
     }
 }

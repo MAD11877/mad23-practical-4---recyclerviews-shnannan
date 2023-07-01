@@ -5,12 +5,10 @@ public class User {
     String description;
     boolean followed;
     int id;
-
-
-    public User(String name, String description, boolean followed) {
-        this.name = name;
-        this.description = description;
-        this.followed = followed;
+    public User(String userName, String userDescription, boolean userFollowed) {
+        this.name = userName;
+        this.description = userDescription;
+        this.followed = userFollowed;
     }
     public User() {
     }
