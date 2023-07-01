@@ -10,11 +10,10 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
     TextView txt;
     TextView desc;
     ImageView image;
-
     public UserViewHolder(View itemView){
         super(itemView);
-        txt = itemView.findViewById(R.id.txtTitle);
-        desc = itemView.findViewById(R.id.txtDesc);
-        image = itemView.findViewById(R.id.image);
+        txt = itemView.findViewById(R.id.textView5);
+        desc = itemView.findViewById(R.id.textView6);
+        image = itemView.findViewById(R.id.imageView2);
     }
 }
